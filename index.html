@@ -1,0 +1,524 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Best Class 12th Notes for Physics, Chemistry, Maths, and English with previous year question paper. Premium study material.">
+    <title>Shorveer Notes | Premium Study Material</title>
+    
+    <!-- Premium Geometric & Editorial Typography -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&family=Playfair+Display:ital,wght@1,600&display=swap" rel="stylesheet">
+
+    <style>
+        /* --- Premium Cosmic CSS Variables --- */
+        :root {
+            --bg-color: #f3f4f9;
+            --text-color: #0b0f19;
+            --accent-color: #c29523;
+            --accent-glow: rgba(194, 149, 35, 0.15);
+            --card-bg: rgba(255, 255, 255, 0.7);
+            --card-border: rgba(11, 15, 25, 0.06);
+            --footer-bg: #0f121d;
+            --search-bg: rgba(255, 255, 255, 0.9);
+            --transition: all 0.5s cubic-bezier(0.2, 0.8, 0.2, 1);
+        }
+
+        .dark-mode {
+            --bg-color: #05050a;
+            --text-color: #f1f5f9;
+            --accent-color: #e2b842;
+            --accent-glow: rgba(226, 184, 66, 0.25);
+            --card-bg: rgba(15, 18, 36, 0.5);
+            --card-border: rgba(255, 255, 255, 0.05);
+            --footer-bg: #020306;
+            --search-bg: rgba(255, 255, 255, 0.03);
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { 
+            background-color: var(--bg-color); 
+            color: var(--text-color); 
+            font-family: 'Outfit', system-ui, sans-serif; 
+            transition: var(--transition); 
+            overflow-x: hidden;
+            -webkit-font-smoothing: antialiased;
+        }
+        a { text-decoration: none; color: inherit; }
+
+        /* --- Full Screen Preloader Video --- */
+        #preloader {
+            position: fixed; top: 0; left: 0; width: 100vw; height: 100vh;
+            background: #05050a; z-index: 9999; display: flex; justify-content: center; align-items: center;
+            transition: opacity 0.7s cubic-bezier(0.2, 0.8, 0.2, 1);
+        }
+        #preloader video { 
+            width: 100vw; height: 100vh; object-fit: cover; 
+        }
+
+        /* --- Floating Frosted Navbar --- */
+        header {
+            display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap;
+            padding: 16px 5%; background-color: var(--card-bg); backdrop-filter: blur(30px); -webkit-backdrop-filter: blur(30px);
+            border-bottom: 1px solid var(--card-border); position: sticky; top: 0; z-index: 100;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.02);
+        }
+        .logo { 
+            font-size: 24px; font-weight: 800; letter-spacing: 3px; text-transform: uppercase;
+            background: linear-gradient(135deg, var(--text-color), var(--accent-color));
+            -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+        }
+        
+        .header-controls { display: flex; align-items: center; gap: 20px; width: 100%; justify-content: flex-end; margin-top: 15px; }
+        
+        .search-bar { flex-grow: 1; max-width: 360px; position: relative; }
+        .search-bar input {
+            width: 100%; padding: 12px 24px; border-radius: 100px; border: 1px solid var(--card-border);
+            outline: none; background: var(--search-bg); color: var(--text-color); font-size: 14px;
+            font-family: inherit; transition: var(--transition);
+        }
+        .search-bar input:focus { border-color: var(--accent-color); box-shadow: 0 0 30px var(--accent-glow); }
+        
+        .search-results {
+            position: absolute; top: 130%; left: 0; width: 100%; background: var(--card-bg); backdrop-filter: blur(20px);
+            border-radius: 20px; box-shadow: 0 20px 50px rgba(0,0,0,0.2); display: none; 
+            flex-direction: column; max-height: 250px; overflow-y: auto; z-index: 1000; border: 1px solid var(--card-border);
+        }
+        .search-item { padding: 14px 22px; border-bottom: 1px solid var(--card-border); cursor: pointer; color: var(--text-color); font-size: 14px; }
+        .search-item:hover { background: var(--accent-color); color: #000; font-weight: 600; }
+
+        .theme-toggle { cursor: pointer; font-size: 18px; background: var(--search-bg); border: 1px solid var(--card-border); padding: 10px 14px; border-radius: 100px; color: var(--text-color); transition: var(--transition); }
+        .theme-toggle:hover { transform: translateY(-2px); border-color: var(--accent-color); }
+
+        .auth-btn {
+            background: var(--text-color); color: var(--bg-color); padding: 12px 26px; border-radius: 100px;
+            font-weight: 600; font-family: inherit; font-size: 14px; cursor: pointer; border: 1px solid var(--card-border); transition: var(--transition);
+        }
+        .auth-btn:hover { background: var(--accent-color); color: #000; transform: translateY(-2px); }
+
+        /* --- Sophisticated Identity Modal --- */
+        #authModal {
+            display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100vh;
+            background: rgba(5, 5, 10, 0.6); backdrop-filter: blur(25px); -webkit-backdrop-filter: blur(25px); z-index: 1000; justify-content: center; align-items: center;
+        }
+        .modal-content {
+            background: var(--card-bg); padding: 50px 40px; border-radius: 32px; text-align: center; width: 90%; max-width: 420px;
+            border: 1px solid var(--card-border); box-shadow: 0 30px 70px rgba(0,0,0,0.25);
+        }
+        .modal-content h2 { font-size: 28px; font-weight: 800; margin-bottom: 15px; letter-spacing: -0.5px; }
+        .modal-content p { font-size: 15px; opacity: 0.6; margin-bottom: 30px; line-height: 1.5; }
+        .google-login-btn {
+            width: 100%; padding: 16px; background: var(--search-bg); color: var(--text-color); border: 1px solid var(--card-border);
+            border-radius: 100px; font-size: 15px; font-weight: 600; cursor: pointer; font-family: inherit;
+            display: flex; align-items: center; justify-content: center; gap: 12px; transition: var(--transition);
+        }
+        .google-login-btn:hover { background: var(--text-color); color: var(--bg-color); transform: translateY(-2px); }
+
+        /* --- Minimalist Editorial Hero Section --- */
+        .hero { text-align: center; padding: 100px 24px 50px; }
+        .hero h1 { font-size: 3.2rem; font-weight: 800; margin-bottom: 20px; line-height: 1.1; letter-spacing: -1.5px; }
+        .hero p { font-size: 1.25rem; opacity: 0.6; max-width: 600px; margin: 0 auto; line-height: 1.6; font-weight: 300; }
+
+        .section-title { text-align: center; font-size: 1.5rem; margin: 70px 0 35px; font-weight: 600; letter-spacing: 2px; text-transform: uppercase; opacity: 0.5; }
+        
+        /* --- Smooth Curved Dashboard Cards --- */
+        .subjects-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 35px; padding: 20px 6%; max-width: 1200px; margin: 0 auto; }
+        
+        .card {
+            background: var(--card-bg); padding: 45px 35px; border-radius: 32px; 
+            border: 1px solid var(--card-border); position: relative; overflow: hidden;
+            box-shadow: 0 15px 45px rgba(0,0,0,0.01); backdrop-filter: blur(10px); transition: var(--transition);
+        }
+        .card::after {
+            content: ''; position: absolute; bottom: 0; left: 0; width: 100%; height: 4px;
+            background: linear-gradient(90deg, transparent, var(--accent-color), transparent);
+            opacity: 0; transition: var(--transition);
+        }
+        .card:hover { 
+            transform: translateY(-10px); 
+            border-color: rgba(255, 255, 255, 0.15);
+            box-shadow: 0 30px 60px rgba(0, 0, 0, 0.06);
+        }
+        .card:hover::after { opacity: 1; }
+        
+        .card h3 { font-size: 1.8rem; margin-bottom: 12px; font-weight: 600; letter-spacing: -0.5px; }
+        .card p { font-size: 1.05rem; margin-bottom: 40px; opacity: 0.5; line-height: 1.6; font-weight: 300; }
+        
+        .card button {
+            background: var(--search-bg); color: var(--text-color); padding: 14px 28px; width: 100%; font-size: 14px;
+            border: 1px solid var(--card-border); border-radius: 100px; cursor: pointer; transition: var(--transition); 
+            font-weight: 600; font-family: inherit; letter-spacing: 0.5px;
+        }
+        .card:hover button { 
+            background: var(--text-color); 
+            color: var(--bg-color);
+            box-shadow: 0 10px 25px var(--accent-glow);
+        }
+        
+        .resource-card { background: linear-gradient(180deg, var(--card-bg), rgba(194, 149, 35, 0.02)); }
+
+        /* --- Fluid Cookie Architecture Shield --- */
+        #cookieHub {
+            position: fixed; bottom: -450px; left: 50%; transform: translateX(-50%);
+            width: 90%; max-width: 440px; background: var(--card-bg); backdrop-filter: blur(30px);
+            color: var(--text-color); padding: 30px; border-radius: 32px; box-shadow: 0 30px 70px rgba(0,0,0,0.2);
+            z-index: 10000; transition: bottom 0.7s cubic-bezier(0.2, 0.8, 0.2, 1);
+            border: 1px solid var(--card-border);
+        }
+        #cookieHub.show { bottom: 30px; }
+        .cookie-text h3 { font-size: 1.4rem; margin-bottom: 10px; font-weight: 600; }
+        .cookie-text p { font-size: 0.95rem; line-height: 1.5; opacity: 0.5; margin-bottom: 25px; font-weight: 300; }
+        
+        .cookie-options { max-height: 0; overflow: hidden; transition: max-height 0.4s ease; display: flex; flex-direction: column; gap: 12px; margin-bottom: 25px; }
+        .cookie-options.open { max-height: 140px; }
+        .option-row { display: flex; justify-content: space-between; align-items: center; font-size: 0.9rem; opacity: 0.7; }
+        .option-row input { accent-color: var(--accent-color); width: 18px; height: 18px; }
+        
+        .cookie-btns { display: flex; gap: 12px; }
+        .cookie-btn { flex: 1; padding: 15px; border-radius: 100px; font-size: 0.9rem; font-weight: 600; border: none; cursor: pointer; font-family: inherit; }
+        .btn-accept { background: var(--text-color); color: var(--bg-color); }
+        .btn-settings { background: var(--search-bg); color: var(--text-color); border: 1px solid var(--card-border); }
+
+        /* --- Curated Studio Footer --- */
+        footer { background: var(--footer-bg); color: #f3f4f6; padding: 90px 6% 45px; margin-top: 120px; border-top: 1px solid var(--card-border); }
+        .motivational-quote { font-family: 'Playfair Display', serif; font-size: 1.5rem; font-style: italic; color: var(--accent-color); text-align: center; margin-bottom: 60px; opacity: 0.85; }
+        
+        .footer-content { display: flex; flex-wrap: wrap; justify-content: center; gap: 60px; margin-bottom: 70px; }
+        .footer-links { display: flex; flex-direction: column; gap: 16px; text-align: center; }
+        .footer-links h4 { font-size: 1rem; text-transform: uppercase; letter-spacing: 2px; margin-bottom: 5px; opacity: 0.4; font-weight: 600; }
+        .footer-links a { color: #9ca3af; font-size: 1rem; transition: color 0.3s; font-weight: 300; }
+        .footer-links a:hover { color: var(--accent-color); }
+        
+        .support-btn { 
+            background: transparent; color: #fff; padding: 16px 36px; border-radius: 100px;
+            font-weight: 600; display: inline-block; font-size: 14px; border: 1px solid rgba(255,255,255,0.15);
+            transition: var(--transition);
+        }
+        .support-btn:hover { background: #fff; color: #000; transform: translateY(-4px); box-shadow: 0 15px 30px rgba(255,255,255,0.1); }
+
+        .signature { border-top: 1px solid rgba(255,255,255,0.03); padding-top: 35px; text-align: center; font-size: 0.9rem; color: #4b5563; font-weight: 300; }
+        .signature strong { color: var(--accent-color); font-weight: 600; }
+
+        @media (min-width: 768px) {
+            header { flex-wrap: nowrap; padding: 20px 6%; }
+            .header-controls { margin-top: 0; width: auto; }
+            .hero h1 { font-size: 4.2rem; }
+            .footer-content { justify-content: space-around; text-align: left; }
+            .footer-links { text-align: left; }
+            .subjects-grid { gap: 40px; }
+        }
+    </style>
+</head>
+<body class="dark-mode">
+
+    <!-- Seamless Video Preloader -->
+    <div id="preloader">
+        <video autoplay muted loop playsinline id="preloaderVideo">
+            <source src="4019.mp4" type="video/mp4">
+        </video>
+    </div>
+
+    <!-- Firebase Secure Authentication Workspace -->
+    <div id="authModal">
+        <div class="modal-content">
+            <h2>Sign in to Workspace</h2>
+            <p>Sync your profile parameters dynamically to preserve persistent study checklists on the cloud network.</p>
+            <button class="google-login-btn" id="loginBtn">
+                <img src="https://fonts.gstatic.com/s/i/productlogos/googleg/v6/web-24dp/logo_googleg_color_24dp.png" alt="G" width="18">
+                Continue with Google
+            </button>
+        </div>
+    </div>
+
+    <!-- Studio Floating Navbar -->
+    <header>
+        <div class="logo">Shorveer</div>
+        <div class="header-controls">
+            <div class="search-bar">
+                <input type="text" placeholder="Search resources..." id="searchInput" oninput="performFuzzySearch()">
+                <div id="searchResults" class="search-results"></div>
+            </div>
+            <button class="theme-toggle" onclick="toggleTheme()" id="themeIcon">☀️</button>
+            <button class="auth-btn" id="navAuthBtn">Connect</button>
+        </div>
+    </header>
+
+    <!-- Editorial Hero Layout -->
+    <section class="hero">
+        <h1 id="welcomeMessage">Elevate Your 12th Class Journey</h1>
+        <p>Architecting high-fidelity, comprehensive reference materials designed explicitly for structural learning optimization.</p>
+    </section>
+
+    <!-- Core Grid Framework -->
+    <h2 class="section-title">Core Syllabi</h2>
+    <section class="subjects-grid">
+        <div class="card">
+            <h3 style="color:var(--accent-color)">Physics</h3>
+            <p>Master physical laws, celestial mechanics, structural formulas, and vector fields.</p>
+            <button onclick="window.location.href='physics/index.html'">Open Module</button>
+        </div>
+        <div class="card">
+            <h3 style="color:var(--accent-color)">Chemistry</h3>
+            <p>Explore orbital compounds, functional group kinetics, equations, and thermodynamic equations.</p>
+            <button onclick="window.location.href='chemistry/index.html'">Open Module</button>
+        </div>
+        <div class="card">
+            <h3 style="color:var(--accent-color)">Mathematics</h3>
+            <p>Decode algorithmic metrics, derivative limits, matrices, and spatial integration models.</p>
+            <button onclick="window.location.href='mathematics/index.html'">Open Module</button>
+        </div>
+        <div class="card">
+            <h3 style="color:var(--accent-color)">English</h3>
+            <p>Refine textual syntactic metrics, conceptual literature evaluations, and modern creative prose formats.</p>
+            <button onclick="window.location.href='english/index.html'">Open Module</button>
+        </div>
+    </section>
+
+    <!-- Secondary System Repositories -->
+    <h2 class="section-title">System Blueprints</h2>
+    <section class="subjects-grid">
+        <div class="card resource-card">
+            <h3>📝 Exam Blueprint</h3>
+            <p>Official CBSE evaluation structures, absolute passing criteria, and strategic mark distribution guides.</p>
+            <button onclick="window.location.href='exam-info.html'">Review Matrix</button>
+        </div>
+        <div class="card resource-card">
+            <h3>🔬 Editorial Guidelines</h3>
+            <p>The operational framework and content selection standards powering our premium curriculum notes.</p>
+            <button onclick="window.location.href='about-notes.html'">Learn More</button>
+        </div>
+        <div class="card resource-card">
+            <h3>🚀 Vision Document</h3>
+            <p>The primary developmental targets, milestones, and infrastructure architect behind Shorveer.</p>
+            <button onclick="window.location.href='about.html'">Read Chronicle</button>
+        </div>
+    </section>
+
+    <!-- Privacy Control Shield -->
+    <div id="cookieHub">
+        <div class="cookie-text">
+            <h3>Privacy Protection Registry</h3>
+            <p>Our scripts deploy client preference keys to store interface states (Theme preferences) and tracking states ('Mark as Done').</p>
+        </div>
+        <div id="cookieDrawer" class="cookie-options">
+            <div class="option-row">
+                <span>Functional Isolation (Theme & Logs)</span>
+                <input type="checkbox" id="cookiesCore" checked disabled>
+            </div>
+            <div class="option-row">
+                <span>Anonymized Analytics Tracker</span>
+                <input type="checkbox" id="cookiesAnalytics" checked>
+            </div>
+        </div>
+        <div class="cookie-btns">
+            <button class="cookie-btn btn-settings" onclick="toggleCookieDrawer()" id="setupCookieBtn">Options</button>
+            <button class="cookie-btn btn-accept" onclick="acceptAllCookies()">Accept</button>
+        </div>
+    </div>
+
+    <!-- Minimal Creative Studio Footer -->
+    <footer>
+        <div class="motivational-quote" id="quoteDisplay">"Success is the sum of small efforts, repeated day in and day out."</div>
+        
+        <div class="footer-content">
+            <div class="footer-links">
+                <h4>System Maps</h4>
+                <a href="about.html">About Us</a>
+                <a href="about-notes.html">About Our Notes</a>
+                <a href="exam-info.html">Exam Blueprint</a>
+                <a href="privacy.html">Privacy Policy</a>
+            </div>
+            <div class="footer-links">
+                <h4>Network Nodes</h4>
+                <a href="https://www.youtube.com/@JSEDIZ" target="_blank">JS EDIZ (YouTube)</a>
+                <a href="mailto:contact@shorveernotes.com">Contact Studio</a>
+            </div>
+            <div style="display: flex; align-items: center;">
+                <a href="#" class="support-btn">☕ Fuel Infrastructure ($1)</a>
+            </div>
+        </div>
+        <div class="signature">
+            <p>&copy; <span id="currentYear"></span> Shorveer Notes. System Environment Secured.</p>
+            <p>Curated and engineered by <strong>Jatin Sharma</strong></p>
+        </div>
+    </footer>
+
+    <!-- Firebase Script Architecture Module Direct Injection -->
+    <script type="module">
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-app.js";
+        import { getAuth, signInWithPopup, GoogleAuthProvider, onAuthStateChanged, signOut } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-auth.js";
+        import { getFirestore, doc, setDoc } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-firestore.js";
+
+        // Your direct verified Firebase app configuration parameters
+        const firebaseConfig = {
+          apiKey: "AIzaSyBfBgKs0NqsOf--PrTynfSQbn16g9P0spc",
+          authDomain: "shorveer-console.firebaseapp.com",
+          projectId: "shorveer-console",
+          storageBucket: "shorveer-console.firebasestorage.app",
+          messagingSenderId: "41286057360",
+          appId: "1:41286057360:web:45a956a72fa5a41cbfc715",
+          measurementId: "G-36DDWERVYM"
+        };
+
+        // Initialize Module Scripts
+        const app = initializeApp(firebaseConfig);
+        const auth = getAuth(app);
+        const db = getFirestore(app);
+        const provider = new GoogleAuthProvider();
+
+        const authModal = document.getElementById('authModal');
+        const loginBtn = document.getElementById('loginBtn');
+        const navAuthBtn = document.getElementById('navAuthBtn');
+        const welcomeMessage = document.getElementById('welcomeMessage');
+
+        // Authentication Observer Interface
+        onAuthStateChanged(auth, (user) => {
+            if (user) {
+                authModal.style.display = 'none';
+                welcomeMessage.innerText = `Welcome back, ${user.displayName}!`;
+                navAuthBtn.innerText = "Disconnect";
+                
+                // Initialize cloud documentation register for student tracking logs
+                syncStudentMetaData(user);
+            } else {
+                authModal.style.display = 'flex';
+                welcomeMessage.innerText = "Elevate Your 12th Class Journey";
+                navAuthBtn.innerText = "Connect";
+            }
+        });
+
+        // Interactive Auth Triggers
+        loginBtn.onclick = async () => {
+            try {
+                await signInWithPopup(auth, provider);
+            } catch (error) {
+                console.error("Authentication execution failure:", error);
+            }
+        };
+
+        navAuthBtn.onclick = async () => {
+            if (auth.currentUser) {
+                await signOut(auth);
+            } else {
+                authModal.style.display = 'flex';
+            }
+        };
+
+        async function syncStudentMetaData(user) {
+            const studentRef = doc(db, "students_progress", user.uid);
+            await setDoc(studentRef, {
+                uid: user.uid,
+                studentName: user.displayName,
+                email: user.email,
+                lastActiveTimestamp: new Date().toISOString()
+            }, { merge: true });
+        }
+    </script>
+
+    <!-- General Display Control Scripting -->
+    <script>
+        // Preloader Controls
+        const videoElement = document.getElementById('preloaderVideo');
+        if (videoElement) {
+            videoElement.addEventListener('canplaythrough', function() {
+                setTimeout(() => {
+                    document.getElementById('preloader').style.opacity = '0';
+                    setTimeout(() => { document.getElementById('preloader').style.display = 'none'; }, 700);
+                }, 1200);
+            });
+            setTimeout(() => {
+                if (document.getElementById('preloader').style.display !== 'none') {
+                    document.getElementById('preloader').style.opacity = '0';
+                    setTimeout(() => { document.getElementById('preloader').style.display = 'none'; }, 700);
+                }
+            }, 5000);
+        }
+
+        // Theme Configuration System
+        function toggleTheme() {
+            document.body.classList.toggle('dark-mode');
+            const icon = document.getElementById('themeIcon');
+            icon.innerText = document.body.classList.contains('dark-mode') ? '☀️' : '🌙';
+        }
+
+        // Cookie Actions
+        if (!localStorage.getItem('shorveer_cookies_accepted')) {
+            setTimeout(() => { document.getElementById('cookieHub').classList.add('show'); }, 1000);
+        }
+        function toggleCookieDrawer() {
+            const drawer = document.getElementById('cookieDrawer');
+            const btn = document.getElementById('setupCookieBtn');
+            drawer.classList.toggle('open');
+            btn.innerText = drawer.classList.contains('open') ? "Hide Options" : "Options";
+        }
+        function acceptAllCookies() {
+            localStorage.setItem('shorveer_cookies_accepted', 'true');
+            document.getElementById('cookieHub').classList.remove('show');
+        }
+
+        document.getElementById('currentYear').innerText = new Date().getFullYear();
+
+        // Content Quote Rotator
+        const quotes = [
+            '"Push yourself, because no one else is going to do it for you."',
+            '"Sapne wo nahi jo hum sote hue dekhte hain, sapne wo hain jo humein sone nahi dete. - APJ Abdul Kalam"',
+            '"The secret of getting ahead is getting started."',
+            '"Mehnat itni khamoshi se karo, ki safalta shor macha de."'
+        ];
+        let quoteIndex = 0;
+        const quoteElement = document.getElementById('quoteDisplay');
+        setInterval(() => {
+            quoteElement.style.opacity = 0; 
+            setTimeout(() => {
+                quoteIndex = (quoteIndex + 1) % quotes.length;
+                quoteElement.innerText = quotes[quoteIndex];
+                quoteElement.style.opacity = 1; 
+            }, 500); 
+        }, 6000); 
+
+        // Fuzzy Search
+        const searchData = [
+            { title: "Physics - Class 12 Notes", url: "physics/index.html" },
+            { title: "Chemistry - Class 12 Notes", url: "chemistry/index.html" },
+            { title: "Mathematics - Class 12 Notes", url: "mathematics/index.html" },
+            { title: "English - Class 12 Notes", url: "english/index.html" },
+            { title: "Exam Blueprint & Passing Rules", url: "exam-info.html" },
+            { title: "About Our Notes (Methodology)", url: "about-notes.html" },
+            { title: "About Us (Jatin Sharma)", url: "about.html" },
+            { title: "Privacy Policy", url: "privacy.html" }
+        ];
+
+        function performFuzzySearch() {
+            const query = document.getElementById('searchInput').value.toLowerCase().replace(/\s+/g, '');
+            const resultsBox = document.getElementById('searchResults');
+            if (query.length < 1) { resultsBox.style.display = 'none'; return; }
+
+            const filtered = searchData.filter(item => {
+                let itemTitle = item.title.toLowerCase().replace(/\s+/g, '');
+                let i = 0, j = 0;
+                while (i < query.length && j < itemTitle.length) { if (query[i] === itemTitle[j]) i++; j++; }
+                return i === query.length;
+            });
+
+            resultsBox.innerHTML = ''; 
+            if (filtered.length > 0) {
+                filtered.forEach(match => {
+                    const div = document.createElement('div');
+                    div.className = 'search-item';
+                    div.innerText = match.title;
+                    div.onclick = () => window.location.href = match.url; 
+                    resultsBox.appendChild(div);
+                });
+                resultsBox.style.display = 'flex';
+            } else {
+                resultsBox.innerHTML = '<div class="search-item" style="color:#ef4444; font-weight: 600;">No results found.</div>';
+                resultsBox.style.display = 'flex';
+            }
+        }
+        document.addEventListener('click', (e) => {
+            if(!e.target.closest('.search-bar')) { document.getElementById('searchResults').style.display = 'none'; }
+        });
+    </script>
+</body>
+</html>
