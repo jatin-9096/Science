@@ -1,0 +1,646 @@
+ <!DOCTYPE html>
+ <html lang="en">
+ <head>
+ <meta charset="UTF-8">
+ <meta name="viewport" content="width=device-width, initial-scale=1.0">
+ <meta name="description" content="Complete Class 12th English Premium Analytics Dashboard by Shorveer Notes.">
+ <title>English | Shorveer Notes</title>
+ 
+ <link rel="preconnect" href="https://fonts.googleapis.com">
+ <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+ <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&family=Playfair+Display:ital,wght@1,600&display=swap" rel="stylesheet">
+ 
+ <style>
+ /* --- Premium Cosmic CSS Variables --- */
+ :root {
+ --bg-color: #f3f4f9;
+ --text-color: #0b0f19;
+ --accent-color: #c29523;
+ --accent-glow: rgba(194, 149, 35, 0.15);
+ --card-bg: rgba(255, 255, 255, 0.7);
+ --card-border: rgba(11, 15, 25, 0.06);
+ --footer-bg: #0f121d;
+ --search-bg: rgba(255, 255, 255, 0.9);
+ --transition: all 0.5s cubic-bezier(0.2, 0.8, 0.2, 1);
+ }
+ 
+ .dark-mode {
+ --bg-color: #05050a;
+ --text-color: #f1f5f9;
+ --accent-color: #e2b842;
+ --accent-glow: rgba(226, 184, 66, 0.25);
+ --card-bg: rgba(15, 18, 36, 0.5);
+ --card-border: rgba(255, 255, 255, 0.05);
+ --footer-bg: #020306;
+ --search-bg: rgba(255, 255, 255, 0.03);
+ }
+ 
+ * { margin: 0; padding: 0; box-sizing: border-box; }
+ body { 
+ background-color: var(--bg-color); 
+ color: var(--text-color); 
+ font-family: 'Outfit', system-ui, sans-serif; 
+ transition: var(--transition); 
+ overflow-x: hidden;
+ -webkit-font-smoothing: antialiased;
+ }
+ a { text-decoration: none; color: inherit; }
+ 
+ /* --- Immersive Cinematic Preloader (Liquid Flip Animation) --- */
+ #secureAuthGate {
+ position: fixed; top: 0; left: 0; width: 100vw; height: 100vh;
+ background: rgba(5, 5, 10, 0.6); backdrop-filter: blur(35px); -webkit-backdrop-filter: blur(35px);
+ z-index: 9999; display: flex; justify-content: center; align-items: center;
+ }
+ .gate-content {
+ background: var(--card-bg); padding: 50px 40px; border-radius: 32px; text-align: center; width: 90%; max-width: 420px;
+ border: 1px solid var(--card-border); box-shadow: 0 30px 70px rgba(0,0,0,0.25);
+ animation: cardEntrance 0.7s cubic-bezier(0.2, 0.8, 0.2, 1);
+ }
+ .gate-content h2 { font-size: 28px; font-weight: 800; margin-bottom: 15px; letter-spacing: -0.5px; }
+ .gate-content p { font-size: 15px; opacity: 0.6; margin-bottom: 30px; line-height: 1.5; }
+ .google-login-btn {
+ width: 100%; padding: 16px; background: var(--search-bg); color: var(--text-color); border: 1px solid var(--card-border);
+ border-radius: 100px; font-size: 15px; font-weight: 600; cursor: pointer; font-family: inherit;
+ display: flex; align-items: center; justify-content: center; gap: 12px; transition: var(--transition);
+ }
+ .google-login-btn:hover { background: var(--text-color); color: var(--bg-color); transform: translateY(-3px); }
+ 
+ /* --- Protected Main App Layout Block --- */
+ #protectedContent { display: none; }
+ 
+ /* --- Floating Frosted Navbar --- */
+ header {
+ display: flex; justify-content: space-between; align-items: center;
+ padding: 16px 5%; background-color: var(--card-bg); backdrop-filter: blur(30px); -webkit-backdrop-filter: blur(30px);
+ border-bottom: 1px solid var(--card-border); position: sticky; top: 0; z-index: 100;
+ }
+ .back-btn { font-size: 14px; font-weight: 600; text-transform: uppercase; letter-spacing: 1px; color: var(--text-color); }
+ .back-btn:hover { color: var(--accent-color); }
+ 
+ .nav-controls { display: flex; align-items: center; gap: 15px; }
+ .theme-toggle { cursor: pointer; font-size: 18px; background: var(--search-bg); border: 1px solid var(--card-border); padding: 10px 14px; border-radius: 100px; color: var(--text-color); transition: var(--transition); }
+ .theme-toggle:hover { border-color: var(--accent-color); }
+ 
+ /* --- Interactive Student Data Metrics Grid --- */
+ .container { padding: 40px 5%; max-width: 1100px; margin: 0 auto; min-height: 70vh; }
+ 
+ .metrics-dashboard {
+ display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 20px;
+ margin-bottom: 50px; background: var(--card-bg); padding: 30px; border-radius: 32px;
+ border: 1px solid var(--card-border); backdrop-filter: blur(10px);
+ }
+ .metric-card { text-align: left; position: relative; }
+ .metric-card h4 { font-size: 13px; opacity: 0.4; text-transform: uppercase; letter-spacing: 1.5px; margin-bottom: 8px; }
+ .metric-card p { font-size: 28px; font-weight: 800; color: var(--text-color); }
+ .metric-card span { color: var(--accent-color); font-weight: 600; }
+ 
+ /* Animated Progress Tracker Bar */
+ .progress-container { width: 100%; height: 6px; background: rgba(255,255,255,0.05); border-radius: 100px; margin-top: 10px; overflow: hidden; border: 1px solid var(--card-border); }
+ .progress-bar-fill { height: 100%; width: 0%; background: var(--accent-color); border-radius: 100px; transition: width 1s cubic-bezier(0.2, 0.8, 0.2, 1); }
+ 
+ .section-title { font-size: 1.4rem; font-weight: 600; margin: 50px 0 25px; letter-spacing: 2px; text-transform: uppercase; opacity: 0.5; }
+ 
+ /* --- Premium Animated Curriculum Cards --- */
+ .chapter-card {
+ background: var(--card-bg); padding: 35px 30px; border-radius: 28px;
+ margin-bottom: 25px; border: 1px solid var(--card-border);
+ box-shadow: 0 15px 45px rgba(0,0,0,0.01); backdrop-filter: blur(10px);
+ display: flex; flex-direction: column; gap: 20px; transition: var(--transition);
+ }
+ .chapter-card:hover { 
+ transform: translateY(-6px); 
+ border-color: rgba(255, 255, 255, 0.12);
+ box-shadow: 0 25px 50px rgba(0, 0, 0, 0.04);
+ }
+ .chapter-info h3 { font-size: 1.5rem; font-weight: 600; margin-bottom: 8px; letter-spacing: -0.5px; }
+ .chapter-info p { font-size: 1rem; opacity: 0.5; font-weight: 300; line-height: 1.6; }
+ 
+ .chapter-controls-row { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 15px; width: 100%; border-top: 1px solid var(--card-border); padding-top: 20px; }
+ 
+ .chapter-actions { display: flex; flex-wrap: wrap; gap: 10px; flex-grow: 1; max-width: 600px; }
+ .action-btn { 
+ padding: 12px 24px; border-radius: 100px; font-size: 13px; font-weight: 600; 
+ border: 1px solid var(--card-border); background: var(--search-bg); color: var(--text-color); cursor: pointer; transition: var(--transition);
+ }
+ .action-btn:hover { background: var(--text-color); color: var(--bg-color); transform: translateY(-2px); }
+ 
+ /* Done Checkbox Integration */
+ .tracking-box { display: flex; align-items: center; gap: 12px; background: var(--search-bg); padding: 10px 20px; border-radius: 100px; border: 1px solid var(--card-border); cursor: pointer; }
+ .tracking-box span { font-size: 13px; font-weight: 600; opacity: 0.7; }
+ .done-check { width: 18px; height: 18px; cursor: pointer; accent-color: var(--accent-color); }
+ 
+ /* --- Premium Redirect Cards for Papers --- */
+ .redirect-wrapper {
+ background: var(--card-bg); border: 1px dashed var(--accent-color);
+ padding: 40px; border-radius: 32px; text-align: center; margin-top: 60px;
+ }
+ .redirect-wrapper h3 { font-size: 1.6rem; margin-bottom: 10px; }
+ .redirect-wrapper p { font-size: 1rem; opacity: 0.5; margin-bottom: 25px; max-width: 500px; margin-left: auto; margin-right: auto;}
+ .redirect-btn { background: var(--text-color); color: var(--bg-color); padding: 16px 36px; border-radius: 100px; border: none; font-weight: 600; font-size: 14px; cursor: pointer; transition: var(--transition); text-transform: uppercase; letter-spacing: 1px;}
+ .redirect-btn:hover { background: var(--accent-color); color: #000; transform: translateY(-3px); }
+ 
+ /* --- Studio Footer --- */
+ footer { background: var(--footer-bg); color: #f3f4f6; padding: 45px 6%; text-align: center; border-top: 1px solid var(--card-border); margin-top: 100px; }
+ footer p { font-size: 0.88rem; color: #4b5563; font-weight: 300; }
+ 
+ @keyframes cardEntrance { from { opacity: 0; transform: scale(0.95) translateY(20px); } to { opacity: 1; transform: scale(1) translateY(0); } }
+ 
+ @media (min-width: 768px) {
+ .chapter-card { padding: 40px; }
+ .chapter-controls-row { flex-wrap: nowrap; }
+ }
+ </style>
+ </head>
+ <body class="dark-mode">
+ 
+ <div id="secureAuthGate">
+ <div class="gate-content">
+ <h2>English Console Core</h2>
+ <p>Authentication trace required. Connect your active student profile node to initialize performance matrices.</p>
+ <button class="google-login-btn" id="gateLoginBtn">
+ <img src="https://fonts.gstatic.com/s/i/productlogos/googleg/v6/web-24dp/logo_googleg_color_24dp.png" alt="G" width="18">
+ Continue with Google
+ </button>
+ </div>
+ </div>
+ 
+ <div id="protectedContent">
+ <header>
+ <a href="../index.html" class="back-btn">⬅ Core Dashboard</a>
+ <div class="nav-controls">
+ <button class="theme-toggle" onclick="toggleTheme()" id="themeIcon">☀️</button>
+ </div>
+ </header>
+ 
+ <div class="container">
+ <div class="metrics-dashboard">
+ <div class="metric-card">
+ <h4>Student Track</h4>
+ <p id="studentNameDisplay">Loading...</p>
+ </div>
+ <div class="metric-card">
+ <h4>Test Performance</h4>
+ <p><span>A+</span> Profile</p>
+ </div>
+ <div class="metric-card">
+ <h4>Syllabus Finished</h4>
+ <p id="completionText">0% Completed</p>
+ <div class="progress-container"><div class="progress-bar-fill" id="progressBar"></div></div>
+ </div>
+ </div>
+ 
+ <h3 class="section-title">📚 Book 1: Flamingo (Prose)</h3>
+ 
+ <div class="chapter-card">
+ <div class="chapter-info">
+ <h3>1. The Last Lesson</h3>
+ <p>Alphonse Daudet - Importance of mother tongue, patriotism, and the impacts of war on education.</p>
+ </div>
+ <div class="chapter-controls-row">
+ <div class="chapter-actions">
+ <button class="action-btn">Summary</button>
+ <button class="action-btn">Character Sketch</button>
+ </div>
+ <label class="tracking-box">
+ <span>Mark as Done</span>
+ <input type="checkbox" class="done-check" id="eng_prose_1" onchange="updateCloudTracker('eng_prose_1')">
+ </label>
+ </div>
+ </div>
+ 
+ <div class="chapter-card">
+ <div class="chapter-info">
+ <h3>2. Lost Spring</h3>
+ <p>Anees Jung - Stories of stolen childhood, grinding poverty, and traditions trapping children in labor.</p>
+ </div>
+ <div class="chapter-controls-row">
+ <div class="chapter-actions">
+ <button class="action-btn">Summary</button>
+ <button class="action-btn">Character Sketch</button>
+ </div>
+ <label class="tracking-box">
+ <span>Mark as Done</span>
+ <input type="checkbox" class="done-check" id="eng_prose_2" onchange="updateCloudTracker('eng_prose_2')">
+ </label>
+ </div>
+ </div>
+ 
+ <div class="chapter-card">
+ <div class="chapter-info">
+ <h3>3. Deep Water</h3>
+ <p>William Douglas - An autobiographical account of overcoming fear through sheer willpower and determination.</p>
+ </div>
+ <div class="chapter-controls-row">
+ <div class="chapter-actions">
+ <button class="action-btn">Summary</button>
+ <button class="action-btn">Character Sketch</button>
+ </div>
+ <label class="tracking-box">
+ <span>Mark as Done</span>
+ <input type="checkbox" class="done-check" id="eng_prose_3" onchange="updateCloudTracker('eng_prose_3')">
+ </label>
+ </div>
+ </div>
+ 
+ <div class="chapter-card">
+ <div class="chapter-info">
+ <h3>4. The Rattrap</h3>
+ <p>Selma Lagerlöf - Universal theme that essential goodness in a human can be awakened through love and understanding.</p>
+ </div>
+ <div class="chapter-controls-row">
+ <div class="chapter-actions">
+ <button class="action-btn">Summary</button>
+ <button class="action-btn">Character Sketch</button>
+ </div>
+ <label class="tracking-box">
+ <span>Mark as Done</span>
+ <input type="checkbox" class="done-check" id="eng_prose_4" onchange="updateCloudTracker('eng_prose_4')">
+ </label>
+ </div>
+ </div>
+ 
+ <div class="chapter-card">
+ <div class="chapter-info">
+ <h3>5. Indigo</h3>
+ <p>Louis Fischer - Mahatma Gandhi's struggle for the poor sharecroppers of Champaran against British landlordism.</p>
+ </div>
+ <div class="chapter-controls-row">
+ <div class="chapter-actions">
+ <button class="action-btn">Summary</button>
+ <button class="action-btn">Character Sketch</button>
+ </div>
+ <label class="tracking-box">
+ <span>Mark as Done</span>
+ <input type="checkbox" class="done-check" id="eng_prose_5" onchange="updateCloudTracker('eng_prose_5')">
+ </label>
+ </div>
+ </div>
+ 
+ <div class="chapter-card">
+ <div class="chapter-info">
+ <h3>6. Poets and Pancakes</h3>
+ <p>Asokamitran - A look inside Gemini Studios, sub-castes of film production, and political undercurrents.</p>
+ </div>
+ <div class="chapter-controls-row">
+ <div class="chapter-actions">
+ <button class="action-btn">Summary</button>
+ <button class="action-btn">Character Sketch</button>
+ </div>
+ <label class="tracking-box">
+ <span>Mark as Done</span>
+ <input type="checkbox" class="done-check" id="eng_prose_6" onchange="updateCloudTracker('eng_prose_6')">
+ </label>
+ </div>
+ </div>
+ 
+ <div class="chapter-card">
+ <div class="chapter-info">
+ <h3>7. The Interview</h3>
+ <p>Christopher Silvester - Dual perspectives on interviews and an insightful excerpt with Umberto Eco.</p>
+ </div>
+ <div class="chapter-controls-row">
+ <div class="chapter-actions">
+ <button class="action-btn">Summary</button>
+ <button class="action-btn">Character Sketch</button>
+ </div>
+ <label class="tracking-box">
+ <span>Mark as Done</span>
+ <input type="checkbox" class="done-check" id="eng_prose_7" onchange="updateCloudTracker('eng_prose_7')">
+ </label>
+ </div>
+ </div>
+ 
+ <div class="chapter-card">
+ <div class="chapter-info">
+ <h3>8. Going Places</h3>
+ <p>A.R. Barton - Teenage fantasies, hero-worshiping, and the reality-check of lower-middle-class life.</p>
+ </div>
+ <div class="chapter-controls-row">
+ <div class="chapter-actions">
+ <button class="action-btn">Summary</button>
+ <button class="action-btn">Character Sketch</button>
+ </div>
+ <label class="tracking-box">
+ <span>Mark as Done</span>
+ <input type="checkbox" class="done-check" id="eng_prose_8" onchange="updateCloudTracker('eng_prose_8')">
+ </label>
+ </div>
+ </div>
+ 
+ <h3 class="section-title">📖 Book 1: Flamingo (Poetry)</h3>
+ 
+ <div class="chapter-card">
+ <div class="chapter-info">
+ <h3>Poem 1: My Mother at Sixty-Six</h3>
+ <p>Kamala Das - A moving exploration of human relationships, aging, and the painful fear of loss.</p>
+ </div>
+ <div class="chapter-controls-row">
+ <div class="chapter-actions">
+ <button class="action-btn">Summary</button>
+ <button class="action-btn">Poetic Devices</button>
+ </div>
+ <label class="tracking-box">
+ <span>Mark as Done</span>
+ <input type="checkbox" class="done-check" id="eng_poem_1" onchange="updateCloudTracker('eng_poem_1')">
+ </label>
+ </div>
+ </div>
+ 
+ <div class="chapter-card">
+ <div class="chapter-info">
+ <h3>Poem 2: An Elementary School Classroom in a Slum</h3>
+ <p>Stephen Spender - Social injustice, class inequalities, and the bleak reality of slum children.</p>
+ </div>
+ <div class="chapter-controls-row">
+ <div class="chapter-actions">
+ <button class="action-btn">Summary</button>
+ <button class="action-btn">Poetic Devices</button>
+ </div>
+ <label class="tracking-box">
+ <span>Mark as Done</span>
+ <input type="checkbox" class="done-check" id="eng_poem_2" onchange="updateCloudTracker('eng_poem_2')">
+ </label>
+ </div>
+ </div>
+ 
+ <div class="chapter-card">
+ <div class="chapter-info">
+ <h3>Poem 3: Keeping Quiet</h3>
+ <p>Pablo Neruda - An emphasis on quiet introspection, universal brotherhood, and halting mindless actions.</p>
+ </div>
+ <div class="chapter-controls-row">
+ <div class="chapter-actions">
+ <button class="action-btn">Summary</button>
+ <button class="action-btn">Poetic Devices</button>
+ </div>
+ <label class="tracking-box">
+ <span>Mark as Done</span>
+ <input type="checkbox" class="done-check" id="eng_poem_3" onchange="updateCloudTracker('eng_poem_3')">
+ </label>
+ </div>
+ </div>
+ 
+ <div class="chapter-card">
+ <div class="chapter-info">
+ <h3>Poem 4: A Thing of Beauty</h3>
+ <p>John Keats - Nature's endless treasures providing a perennial source of joy and healing power.</p>
+ </div>
+ <div class="chapter-controls-row">
+ <div class="chapter-actions">
+ <button class="action-btn">Summary</button>
+ <button class="action-btn">Poetic Devices</button>
+ </div>
+ <label class="tracking-box">
+ <span>Mark as Done</span>
+ <input type="checkbox" class="done-check" id="eng_poem_4" onchange="updateCloudTracker('eng_poem_4')">
+ </label>
+ </div>
+ </div>
+ 
+ <div class="chapter-card">
+ <div class="chapter-info">
+ <h3>Poem 5: A Roadside Stand</h3>
+ <p>Robert Frost - The economic divide between city dwellers and the pleading rural poor struggling for basic cash flow.</p>
+ </div>
+ <div class="chapter-controls-row">
+ <div class="chapter-actions">
+ <button class="action-btn">Summary</button>
+ <button class="action-btn">Poetic Devices</button>
+ </div>
+ <label class="tracking-box">
+ <span>Mark as Done</span>
+ <input type="checkbox" class="done-check" id="eng_poem_5" onchange="updateCloudTracker('eng_poem_5')">
+ </label>
+ </div>
+ </div>
+ 
+ <div class="chapter-card">
+ <div class="chapter-info">
+ <h3>Poem 6: Aunt Jennifer's Tigers</h3>
+ <p>Adrienne Rich - Patriarchal constraints, struggles of a married woman, and art as an escape mechanism.</p>
+ </div>
+ <div class="chapter-controls-row">
+ <div class="chapter-actions">
+ <button class="action-btn">Summary</button>
+ <button class="action-btn">Poetic Devices</button>
+ </div>
+ <label class="tracking-box">
+ <span>Mark as Done</span>
+ <input type="checkbox" class="done-check" id="eng_poem_6" onchange="updateCloudTracker('eng_poem_6')">
+ </label>
+ </div>
+ </div>
+ 
+ <h3 class="section-title">📘 Book 2: Vistas (Supplementary)</h3>
+ 
+ <div class="chapter-card">
+ <div class="chapter-info">
+ <h3>1. The Third Level</h3>
+ <p>Jack Finney - Psychological escape from modern day stress, insecurity, and psychological anxieties.</p>
+ </div>
+ <div class="chapter-controls-row">
+ <div class="chapter-actions">
+ <button class="action-btn">Summary</button>
+ <button class="action-btn">Character Sketch</button>
+ </div>
+ <label class="tracking-box">
+ <span>Mark as Done</span>
+ <input type="checkbox" class="done-check" id="eng_vistas_1" onchange="updateCloudTracker('eng_vistas_1')">
+ </label>
+ </div>
+ </div>
+ 
+ <div class="chapter-card">
+ <div class="chapter-info">
+ <h3>2. The Tiger King</h3>
+ <p>Kalki - Political satire aimed at the eccentricity, pride, and ultimate helplessness of those in high power.</p>
+ </div>
+ <div class="chapter-controls-row">
+ <div class="chapter-actions">
+ <button class="action-btn">Summary</button>
+ <button class="action-btn">Character Sketch</button>
+ </div>
+ <label class="tracking-box">
+ <span>Mark as Done</span>
+ <input type="checkbox" class="done-check" id="eng_vistas_2" onchange="updateCloudTracker('eng_vistas_2')">
+ </label>
+ </div>
+ </div>
+ 
+ <div class="chapter-card">
+ <div class="chapter-info">
+ <h3>3. Journey to the End of the Earth</h3>
+ <p>Tishani Doshi - First-hand geological experience in Antarctica, shedding light on severe climate change threats.</p>
+ </div>
+ <div class="chapter-controls-row">
+ <div class="chapter-actions">
+ <button class="action-btn">Summary</button>
+ <button class="action-btn">Important Q&A</button>
+ </div>
+ <label class="tracking-box">
+ <span>Mark as Done</span>
+ <input type="checkbox" class="done-check" id="eng_vistas_3" onchange="updateCloudTracker('eng_vistas_3')">
+ </label>
+ </div>
+ </div>
+ 
+ <div class="chapter-card">
+ <div class="chapter-info">
+ <h3>4. The Enemy</h3>
+ <p>Pearl S. Buck - Conflict between national loyalty and humanitarian duty during wartime through Dr. Sadao's dilemma.</p>
+ </div>
+ <div class="chapter-controls-row">
+ <div class="chapter-actions">
+ <button class="action-btn">Summary</button>
+ <button class="action-btn">Character Sketch</button>
+ </div>
+ <label class="tracking-box">
+ <span>Mark as Done</span>
+ <input type="checkbox" class="done-check" id="eng_vistas_4" onchange="updateCloudTracker('eng_vistas_4')">
+ </label>
+ </div>
+ </div>
+ 
+ <div class="chapter-card">
+ <div class="chapter-info">
+ <h3>5. On the Face of It</h3>
+ <p>Susan Hill - Deep psychological effects of physical disability, loneliness, and the power of supportive bonding.</p>
+ </div>
+ <div class="chapter-controls-row">
+ <div class="chapter-actions">
+ <button class="action-btn">Summary</button>
+ <button class="action-btn">Character Sketch</button>
+ </div>
+ <label class="tracking-box">
+ <span>Mark as Done</span>
+ <input type="checkbox" class="done-check" id="eng_vistas_5" onchange="updateCloudTracker('eng_vistas_5')">
+ </label>
+ </div>
+ </div>
+ 
+ <div class="chapter-card">
+ <div class="chapter-info">
+ <h3>6. Memories of Childhood</h3>
+ <p>Zitkala-Sa & Bama - Dual autobiographical tales exploring marginalization, racism, and social untouchability.</p>
+ </div>
+ <div class="chapter-controls-row">
+ <div class="chapter-actions">
+ <button class="action-btn">Summary</button>
+ <button class="action-btn">Important Q&A</button>
+ </div>
+ <label class="tracking-box">
+ <span>Mark as Done</span>
+ <input type="checkbox" class="done-check" id="eng_vistas_6" onchange="updateCloudTracker('eng_vistas_6')">
+ </label>
+ </div>
+ </div>
+ 
+ <div class="redirect-wrapper">
+ <h3>📋 PYQ & CBSE Sample Papers</h3>
+ <p>Access the exclusive repository containing previous year question documents and structural evaluation board mock papers.</p>
+ <button class="redirect-btn" onclick="window.location.href='papers.html'">Open Papers Repository Node</button>
+ </div>
+ </div>
+ 
+ <footer>
+ <p>&copy; 2026 Shorveer Notes. Environmental Console Logs Secured.</p>
+ </footer>
+ </div>
+ 
+ <script type="module">
+ import { initializeApp } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-app.js";
+ import { getAuth, signInWithPopup, GoogleAuthProvider, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-auth.js";
+ import { getFirestore, doc, setDoc, getDoc } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-firestore.js";
+ 
+ const firebaseConfig = {
+ apiKey: "AIzaSyBfBgKs0NqsOf--PrTynfSQbn16g9P0spc",
+ authDomain: "shorveer-console.firebaseapp.com",
+ projectId: "shorveer-console",
+ storageBucket: "shorveer-console.firebasestorage.app",
+ messagingSenderId: "41286057360",
+ appId: "1:41286057360:web:45a956a72fa5a41cbfc715",
+ measurementId: "G-36DDWERVYM"
+ };
+ 
+ const app = initializeApp(firebaseConfig);
+ const auth = getAuth(app);
+ const db = getFirestore(app);
+ const provider = new GoogleAuthProvider();
+ 
+ const secureAuthGate = document.getElementById('secureAuthGate');
+ const protectedContent = document.getElementById('protectedContent');
+ const gateLoginBtn = document.getElementById('gateLoginBtn');
+ const studentNameDisplay = document.getElementById('studentNameDisplay');
+ 
+ // Total tracked structural items checkbox counts
+ const totalItemsCount = 20; 
+ 
+ onAuthStateChanged(auth, async (user) => {
+ if (user) {
+ secureAuthGate.style.display = 'none';
+ protectedContent.style.display = 'block';
+ studentNameDisplay.innerText = user.displayName;
+ 
+ // Fetch dynamic tracking logs from cloud database
+ await loadCloudTracker(user.uid);
+ } else {
+ secureAuthGate.style.display = 'flex';
+ protectedContent.style.display = 'none';
+ }
+ });
+ 
+ gateLoginBtn.onclick = async () => {
+ try { await signInWithPopup(auth, provider); } catch (e) { console.error(e); }
+ };
+ 
+ // Window level binding for checklist updates
+ window.updateCloudTracker = async function(chapterId) {
+ const user = auth.currentUser;
+ if (!user) return;
+ 
+ const isChecked = document.getElementById(chapterId).checked;
+ const studentRef = doc(db, "students_progress", user.uid);
+ 
+ let updatePayload = {};
+ updatePayload[`english_progress.${chapterId}`] = isChecked;
+ 
+ await setDoc(studentRef, updatePayload, { merge: true });
+ calculateProgressMetrics();
+ }
+ 
+ async function loadCloudTracker(uid) {
+ const studentRef = doc(db, "students_progress", uid);
+ const docSnap = await getDoc(studentRef);
+ 
+ if (docSnap.exists() && docSnap.data().english_progress) {
+ const logs = docSnap.data().english_progress;
+ Object.keys(logs).forEach(key => {
+ const el = document.getElementById(key);
+ if (el) el.checked = logs[key];
+ });
+ }
+ calculateProgressMetrics();
+ }
+ 
+ function calculateProgressMetrics() {
+ const checkboxes = document.querySelectorAll('.done-check');
+ let doneCount = 0;
+ checkboxes.forEach(box => { if (box.checked) doneCount++; });
+ 
+ const percentage = Math.round((doneCount / totalItemsCount) * 100);
+ document.getElementById('completionText').innerText = `${percentage}% Completed`;
+ document.getElementById('progressBar').style.width = `${percentage}%`;
+ }
+ </script>
+ 
+ <script>
+ function toggleTheme() {
+ document.body.classList.toggle('dark-mode');
+ const icon = document.getElementById('themeIcon');
+ icon.innerText = document.body.classList.contains('dark-mode') ? '☀️' : '🌙';
+ }
+ </script>
+ </body>
+ </html>
+ 
