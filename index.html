@@ -6,7 +6,6 @@
     <meta name="description" content="Shorveer Notes | Class 12 Science Core Console Terminal.">
     <title>Class 12 Science | Shorveer Notes</title>
     
-    <!-- Premium Architectural Typography -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Playfair+Display:ital,wght@1,500&display=swap" rel="stylesheet">
@@ -61,24 +60,6 @@
         }
         #preloader video { width: 100vw; height: 100vh; object-fit: cover; }
 
-        /* --- Forced Security Gate Lock --- */
-        #authModal {
-            display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100vh;
-            background: rgba(3, 4, 7, 0.5); backdrop-filter: blur(30px); -webkit-backdrop-filter: blur(30px); z-index: 1000; justify-content: center; align-items: center;
-        }
-        .modal-content {
-            background: var(--card-bg); padding: 50px 40px; border-radius: 24px; text-align: center; width: 90%; max-width: 400px;
-            border: 1px solid var(--card-border); box-shadow: 0 40px 90px rgba(0,0,0,0.2);
-        }
-        .modal-content h2 { font-size: 26px; font-weight: 700; margin-bottom: 12px; }
-        .modal-content p { font-size: 14px; opacity: 0.5; margin-bottom: 30px; line-height: 1.5; }
-        .google-login-btn {
-            width: 100%; padding: 15px; background: var(--search-bg); color: var(--text-color); border: 1px solid var(--card-border);
-            border-radius: 14px; font-size: 14px; font-weight: 600; cursor: pointer;
-            display: flex; align-items: center; justify-content: center; gap: 12px; transition: var(--transition);
-        }
-        .google-login-btn:hover { background: var(--text-color); color: var(--bg-color); transform: translateY(-2px); }
-
         /* --- Mobile Responsive Floating Header --- */
         header {
             display: flex; flex-direction: column; gap: 15px;
@@ -92,7 +73,6 @@
         
         .header-actions { display: flex; align-items: center; gap: 12px; }
         .theme-toggle { cursor: pointer; font-size: 15px; background: var(--search-bg); border: 1px solid var(--card-border); padding: 10px 14px; border-radius: 12px; color: var(--text-color); transition: var(--transition); }
-        .auth-btn { background: var(--text-color); color: var(--bg-color); padding: 10px 20px; border-radius: 12px; font-weight: 600; font-size: 13px; cursor: pointer; border: 1px solid var(--card-border); transition: var(--transition); }
 
         /* --- Custom Dedicated Search Bar --- */
         .search-container { width: 100%; position: relative; }
@@ -151,30 +131,15 @@
 </head>
 <body class="dark-mode">
 
-    <!-- Preloader -->
     <div id="preloader">
         <video autoplay muted loop playsinline id="preloaderVideo"><source src="4019.mp4" type="video/mp4"></video>
     </div>
 
-    <!-- Forced Access Security Barrier Gate -->
-    <div id="authModal">
-        <div class="modal-content">
-            <h2>Sign in to Science Console</h2>
-            <p>Please connect your verified Google student profile to authorize this subdomain cluster.</p>
-            <button class="google-login-btn" id="loginBtn">
-                <img src="https://fonts.gstatic.com/s/i/productlogos/googleg/v6/web-24dp/logo_googleg_color_24dp.png" alt="G" width="18">
-                Continue with Google
-            </button>
-        </div>
-    </div>
-
-    <!-- Responsive Navigation Bar -->
     <header>
         <div class="header-top">
             <div class="logo">Shorveer Science</div>
             <div class="header-actions">
                 <button class="theme-toggle" onclick="toggleTheme()" id="themeIcon">☀️</button>
-                <button class="auth-btn" id="navAuthBtn">Connect</button>
             </div>
         </div>
         <div class="search-container">
@@ -185,13 +150,11 @@
         </div>
     </header>
 
-    <!-- Hero Content -->
     <section class="hero">
         <h1 id="welcomeMessage">Class 12 Science Hub</h1>
         <p>Architecting fine-tuned repository logs explicitly engineered for learning optimization.</p>
     </section>
 
-    <!-- Subjects Grid -->
     <h2 class="section-title">Core Stream Modules</h2>
     <section class="subjects-grid">
         <div class="card">
@@ -209,7 +172,6 @@
             <p>Analyze derivative limits, matrix algorithmic operations, and spatial geometries.</p>
             <button onclick="window.location.href='mathematics/index.html'">Open Branch</button>
         </div>
-        <!-- English Card Re-Integrated -->
         <div class="card">
             <h3 style="color:var(--accent-color)">English</h3>
             <p>Refine linguistic syntax metrics, literature summaries, and core critical writing protocols.</p>
@@ -217,7 +179,6 @@
         </div>
     </section>
 
-    <!-- Full Functional Premium Footer -->
     <footer>
         <div class="motivational-quote" id="quoteDisplay">"Success is the sum of small efforts, repeated day in and day out."</div>
         <div class="footer-content">
@@ -236,54 +197,6 @@
             <p>Engineered and maintained by <strong>Jatin Sharma</strong></p>
         </div>
     </footer>
-
-    <!-- Firebase System Module Operations -->
-    <script type="module">
-        import { initializeApp } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-app.js";
-        import { getAuth, signInWithPopup, GoogleAuthProvider, onAuthStateChanged, signOut, setPersistence, browserLocalPersistence } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-auth.js";
-        import { getFirestore, doc, setDoc } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-firestore.js";
-
-        const firebaseConfig = {
-          apiKey: "AIzaSyBfBgKs0NqsOf--PrTynfSQbn16g9P0spc",
-          authDomain: "shorveer-console.firebaseapp.com",
-          projectId: "shorveer-console",
-          storageBucket: "shorveer-console.firebasestorage.app",
-          messagingSenderId: "41286057360",
-          appId: "1:41286057360:web:45a956a72fa5a41cbfc715"
-        };
-
-        const app = initializeApp(firebaseConfig);
-        const auth = getAuth(app);
-        const db = getFirestore(app);
-        const provider = new GoogleAuthProvider();
-
-        const authModal = document.getElementById('authModal');
-        const loginBtn = document.getElementById('loginBtn');
-        const navAuthBtn = document.getElementById('navAuthBtn');
-        const welcomeMessage = document.getElementById('welcomeMessage');
-
-        onAuthStateChanged(auth, (user) => {
-            if (user) {
-                authModal.style.display = 'none';
-                welcomeMessage.innerText = `Welcome to Science, ${user.displayName}!`;
-                navAuthBtn.innerText = "Disconnect";
-                setDoc(doc(db, "students_progress", user.uid), { uid: user.uid, studentName: user.displayName, email: user.email, lastActive: new Date().toISOString() }, { merge: true });
-            } else {
-                authModal.style.display = 'flex';
-                welcomeMessage.innerText = "Class 12 Science Hub";
-                navAuthBtn.innerText = "Connect";
-            }
-        });
-
-        loginBtn.onclick = async () => {
-            try {
-                await setPersistence(auth, browserLocalPersistence);
-                await signInWithPopup(auth, provider);
-            } catch (error) { console.error("Session crash logged: ", error); }
-        };
-
-        navAuthBtn.onclick = async () => { if (auth.currentUser) { await signOut(auth); } else { authModal.style.display = 'flex'; } };
-    </script>
 
     <script>
         // Preloader Control
