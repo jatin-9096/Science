@@ -1,0 +1,394 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Rattrap | Shorveer Notes</title>
+    <!-- Modern Fonts: Plus Jakarta Sans for Headings, Inter for Body -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500&family=Plus+Jakarta+Sans:wght@500;700;800&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            /* NextGen Premium Color Palette */
+            --bg-deep: #050505;
+            --surface: rgba(20, 20, 25, 0.6);
+            --surface-border: rgba(255, 255, 255, 0.08);
+            --text-main: #f8fafc;
+            --text-muted: #94a3b8;
+            --accent-gradient: linear-gradient(135deg, #6366f1, #a855f7, #ec4899);
+            --accent-glow: rgba(168, 85, 247, 0.4);
+            --card-hover-bg: rgba(30, 30, 40, 0.8);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--bg-deep);
+            color: var(--text-main);
+            line-height: 1.7;
+            overflow-x: hidden;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        /* Animated Mesh/Aurora Background */
+        .aurora-bg {
+            position: fixed;
+            top: 0; left: 0;
+            width: 100vw; height: 100vh;
+            z-index: -1;
+            background-color: var(--bg-deep);
+            background-image: 
+                radial-gradient(circle at 15% 50%, rgba(99, 102, 241, 0.15), transparent 25%),
+                radial-gradient(circle at 85% 30%, rgba(236, 72, 153, 0.15), transparent 25%),
+                radial-gradient(circle at 50% 80%, rgba(168, 85, 247, 0.15), transparent 25%);
+            filter: blur(60px);
+            animation: auroraShift 15s infinite alternate ease-in-out;
+        }
+
+        @keyframes auroraShift {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.1) translate(2%, 2%); }
+            100% { transform: scale(1) translate(-2%, -2%); }
+        }
+
+        /* Main Container */
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 50px 20px;
+        }
+
+        /* Header Area */
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 50px;
+            animation: fadeDown 1s ease forwards;
+        }
+
+        @keyframes fadeDown {
+            from { opacity: 0; transform: translateY(-20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .back-btn {
+            color: var(--text-muted);
+            text-decoration: none;
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            font-size: 0.95rem;
+            font-weight: 700;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 10px 20px;
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid var(--surface-border);
+            border-radius: 30px;
+            transition: all 0.3s ease;
+        }
+
+        .back-btn:hover {
+            background: rgba(255, 255, 255, 0.1);
+            color: #fff;
+            transform: translateX(-5px);
+        }
+
+        /* Typography */
+        h1 {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            font-size: clamp(2.5rem, 5vw, 4rem);
+            font-weight: 800;
+            text-align: center;
+            margin-bottom: 50px;
+            background: var(--accent-gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            animation: fadeIn 1.2s ease forwards;
+        }
+
+        h2 {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            font-size: 1.6rem;
+            margin-bottom: 25px;
+            color: #fff;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        h2::before {
+            content: '';
+            display: block;
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: var(--accent-gradient);
+        }
+
+        /* Glassmorphic Cards */
+        .glass-card {
+            background: var(--surface);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid var(--surface-border);
+            border-radius: 24px;
+            padding: 40px;
+            margin-bottom: 40px;
+            opacity: 0;
+            transform: translateY(30px);
+            animation: slideUpFade 0.8s cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
+            transition: transform 0.4s ease, box-shadow 0.4s ease, background 0.4s ease;
+        }
+
+        /* Staggered Loading */
+        .glass-card:nth-child(3) { animation-delay: 0.2s; }
+        .glass-card:nth-child(4) { animation-delay: 0.4s; }
+        .glass-card:nth-child(5) { animation-delay: 0.6s; }
+
+        @keyframes slideUpFade {
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .glass-card:hover {
+            transform: translateY(-5px);
+            background: var(--card-hover-bg);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4), 0 0 0 1px rgba(255, 255, 255, 0.1);
+        }
+
+        /* Lists */
+        ul {
+            list-style: none;
+        }
+
+        li {
+            color: var(--text-muted);
+            margin-bottom: 18px;
+            padding-left: 28px;
+            position: relative;
+        }
+
+        li::before {
+            content: '✦';
+            position: absolute;
+            left: 0;
+            top: 2px;
+            background: var(--accent-gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            font-size: 1.1rem;
+        }
+
+        /* NextGen Bento Grid for Q&A */
+        .bento-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 20px;
+        }
+
+        .q-box {
+            background: rgba(255, 255, 255, 0.02);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            padding: 25px;
+            border-radius: 16px;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .q-box::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; width: 100%; height: 3px;
+            background: var(--accent-gradient);
+            transform: scaleX(0);
+            transform-origin: left;
+            transition: transform 0.4s ease;
+        }
+
+        .q-box:hover {
+            background: rgba(255, 255, 255, 0.04);
+            transform: scale(1.02);
+        }
+
+        .q-box:hover::before {
+            transform: scaleX(1);
+        }
+
+        .q-title {
+            color: #fff;
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            font-size: 1.15rem;
+            font-weight: 700;
+            margin-bottom: 12px;
+            line-height: 1.4;
+        }
+
+        .ans-text {
+            color: var(--text-muted);
+            font-size: 0.95rem;
+        }
+
+        /* Navigation Buttons */
+        .nav-bar {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin-top: 60px;
+            flex-wrap: wrap;
+        }
+
+        .nav-btn {
+            padding: 14px 28px;
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid var(--surface-border);
+            color: #fff;
+            text-decoration: none;
+            border-radius: 30px;
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            font-weight: 600;
+            font-size: 0.95rem;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-width: 160px;
+        }
+
+        .nav-btn:hover {
+            background: #fff;
+            color: #000;
+            box-shadow: 0 10px 25px var(--accent-glow);
+            transform: translateY(-3px);
+        }
+
+        /* Footer */
+        footer {
+            text-align: center;
+            margin-top: 60px;
+            padding-top: 30px;
+            border-top: 1px solid var(--surface-border);
+            color: #475569;
+            font-size: 0.9rem;
+        }
+
+        /* Mobile Responsiveness */
+        @media (max-width: 768px) {
+            .container { padding: 30px 15px; }
+            .glass-card { padding: 25px; border-radius: 20px; }
+            .bento-grid { grid-template-columns: 1fr; }
+            h2 { font-size: 1.4rem; }
+            .nav-btn { flex: 1 1 100%; }
+        }
+    </style>
+</head>
+<body>
+    <!-- Animated Ambient Background -->
+    <div class="aurora-bg"></div>
+    
+    <div class="container">
+        <!-- Header -->
+        <header>
+            <a href="../index.html" class="back-btn">← Core Dashboard</a>
+        </header>
+
+        <!-- Main Title -->
+        <h1>The Rattrap</h1>
+
+        <!-- Summary Section -->
+        <div class="glass-card">
+            <h2>Narrative Overview & Summary</h2>
+            <ul>
+                <li>The narrative centers around an impoverished vagabond who survives by crafting and selling wire rattraps. Since his small business is barely enough to keep him alive, he frequently resorts to begging and minor thefts to sustain himself.</li>
+                <li>During one of his dreary wanderings, a profound philosophical thought strikes him: the entire world is essentially a giant rattrap. It offers worldly lures like wealth, joy, shelter, and food simply to bait individuals, snapping shut the moment someone succumbs to temptation.</li>
+                <li>Seeking shelter on a dark, bitter evening, he knocks at a small grey cottage. Instead of the usual hostile refusal, he is warmly received by a lonely old crofter, a former worker at the Ramsjo Ironworks, who is desperate for human companionship.</li>
+                <li>The hospitable host shares his supper, offers tobacco, and candidly discusses his life, even revealing where he keeps his hard-earned savings.</li>
+                <li>Betraying this beautiful trust, the peddler steals the thirty kronor the very next morning. Fearing capture, he abandons the public highway for the dense woods, only to become hopelessly lost. He soon realizes that the stolen money was a bait, and he has now fallen into the world's inescapable trap.</li>
+                <li>Exhausted and near death, he stumbles upon the Ramsjo Ironworks seeking warmth. The ironmaster, inspecting the mill, mistakenly identifies the filthy vagabond as an old regimental comrade, Captain von Stahle. When the peddler refuses an invitation to the manor, the ironmaster's compassionate daughter, Edla Willmansson, successfully persuades him to join them for Christmas Eve.</li>
+                <li>The next morning, washed and well-dressed, the peddler's true, rugged identity is exposed. The furious ironmaster threatens to call the sheriff. However, Edla intervenes with remarkable empathy, arguing that they shouldn't chase away a guest they explicitly promised Christmas cheer.</li>
+                <li>While at church on Christmas morning, the father and daughter learn about the crofter's robbery by a rattrap peddler. Fearing their home has been ransacked, they rush back, only to discover the peddler has left voluntarily without taking a single thing.</li>
+                <li>Instead, deeply moved by Edla's unconditional kindness and respect, he leaves behind a Christmas gift for her: a small rattrap containing the stolen thirty kronor and an appreciative letter. He signs the letter as 'Captain von Stahle', proving that genuine love and trust can elevate a person from their basest instincts.</li>
+            </ul>
+        </div>
+
+        <!-- NCERT Q&A Section 1 (Bento Grid) -->
+        <div class="glass-card">
+            <h2>Think As You Read: Deep Insights</h2>
+            <div class="bento-grid">
+                <div class="q-box">
+                    <div class="q-title">Q1: From where did the peddler get the idea of the world being a rattrap?</div>
+                    <div class="ans-text">The peddler's cynical worldview was born out of his own miserable existence and daily struggles. Trudging along the roads in solitude, his mind naturally drifted to the wire rattraps he carried. He drew a profound, metaphorical parallel between the trap and the world itself.</div>
+                </div>
+
+                <div class="q-box">
+                    <div class="q-title">Q2: Why was he amused by this idea?</div>
+                    <div class="ans-text">This dark philosophy served as a psychological coping mechanism for his own poverty. Because the world had never been kind to him, he found a twisted sense of joy and amusement in visualizing the downfall of others, imagining them ensnared in worldly traps.</div>
+                </div>
+
+                <div class="q-box">
+                    <div class="q-title">Q3: Did the peddler expect the kind of hospitality that he received from the crofter?</div>
+                    <div class="ans-text">Absolutely not. Throughout his vagabond life, the peddler was constantly met with hostile glares, sour faces, and outright rejection. The crofter's enthusiastic, warm welcome was shockingly unexpected.</div>
+                </div>
+
+                <div class="q-box">
+                    <div class="q-title">Q4: Why was the crofter so talkative and friendly?</div>
+                    <div class="ans-text">The old crofter lived an intensely solitary life without a wife or children. This deep-seated loneliness created a desperate hunger for human connection, making him exceptionally accommodating to the peddler.</div>
+                </div>
+                
+                <div class="q-box">
+                    <div class="q-title">Q5: Did the peddler respect the confidence reposed in him by the crofter?</div>
+                    <div class="ans-text">No, the peddler tragically betrayed the old man's trust. The very next morning, fully aware of where the cash was kept, he returned, smashed the window pane, and stole the thirty kronor, driven by his survival instincts.</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- NCERT Q&A Section 2 (Bento Grid) -->
+        <div class="glass-card">
+            <h2>Extended Question Bank</h2>
+            <div class="bento-grid">
+                <div class="q-box">
+                    <div class="q-title">Q6: What made the peddler think that he had indeed fallen into a rattrap?</div>
+                    <div class="ans-text">After committing the theft, he evaded the public highway and plunged into a dense forest. After hours of walking in circles, the chilling realization dawned upon him: the thirty kronor was the "bait," and he had allowed the world's trap to close around him.</div>
+                </div>
+
+                <div class="q-box">
+                    <div class="q-title">Q7: Why did the peddler decline the ironmaster's invitation initially?</div>
+                    <div class="ans-text">He was hyper-aware of the stolen money burning a hole in his pocket. Accepting an invitation to a majestic manor felt like walking into a lion's den, terrified his true identity would be uncovered and lead to his arrest.</div>
+                </div>
+
+                <div class="q-box">
+                    <div class="q-title">Q8: Why did Edla still entertain the peddler even after she knew the truth?</div>
+                    <div class="ans-text">Edla possessed a profoundly empathetic soul. She couldn't bear the thought of turning away a miserable, homeless wretch on Christmas Eve. She empathized with his harsh life and felt a moral obligation to provide him with one day of peace.</div>
+                </div>
+
+                <div class="q-box">
+                    <div class="q-title">Q9: Why did the peddler sign himself as Captain von Stahle?</div>
+                    <div class="ans-text">It was a highly symbolic gesture of his spiritual rebirth. Edla had treated him with the dignity of a real captain. By adopting this persona, he stepped into the honorable role she envisioned for him, breaking free from his "rattrap" existence.</div>
+                </div>
+
+                <div class="q-box">
+                    <div class="q-title">Q10: What made the peddler finally change his ways?</div>
+                    <div class="ans-text">The ultimate catalyst was Edla's unwavering, unconditional compassion. Her unprecedented genuine respect pierced his cynical armor, awakening his conscience and giving him the strength to renounce his dishonest lifestyle.</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Navigation System -->
+        <div class="nav-bar">
+            <a href="deep-water-summary.html" class="nav-btn">← Prev: Deep Water</a>
+            <a href="../index.html" class="nav-btn">🏠 Dashboard</a>
+            <a href="indigo-summary.html" class="nav-btn">Next: Indigo →</a>
+        </div>
+
+        <!-- Footer -->
+        <footer>
+            <p>&copy; 2026 Shorveer Notes | Premium NextGen UI</p>
+        </footer>
+    </div>
+</body>
+</html>
+
